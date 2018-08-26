@@ -1,24 +1,35 @@
 package stack;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 public class NumbersStackTest {
-    @Test
-    public void testGetCount() {
-        NumbersStack numbersStack = new NumbersStack();
-        int expected = 0;
-        int actual = numbersStack.getCount();
-        assertEquals(expected, actual);
+    public static void testThat(boolean condition) {
+    if (condition) {
+        System.out.println("success");
+    } else {
+        System.out.println("failed");
     }
+}
 
-    @Test
-    public void testPush() {
+    public static void main(String[] args) {
         NumbersStack numbersStack = new NumbersStack();
-        int expected = 2;
-        int actual = numbersStack.getPush(10);
-        actual = numbersStack.getPush(20);
-        assertEquals(expected, actual);
+        testThat(numbersStack.getCount() == 0);
+
+        numbersStack.push(10);
+        testThat (numbersStack.getCount() == 1);
+
+        numbersStack.push(20);
+        testThat (numbersStack.getCount() == 2);
+
+        testThat(numbersStack.pop() == 20);
+        testThat(numbersStack.pop() == 10);
+
+
+        numbersStack.push(100);
+        numbersStack.push(200);
+        testThat(numbersStack.peak() == 200);
+        testThat(numbersStack.peak() == 200);
+        testThat (numbersStack.getCount() == 2);
+
+        numbersStack.empty();
+        testThat(numbersStack.getCount() == 0);
     }
 }
